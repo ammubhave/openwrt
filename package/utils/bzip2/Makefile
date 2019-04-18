@@ -62,24 +62,19 @@ TARGET_CFLAGS += \
 CONFIGURE_ARGS += --prefix=/usr
 
 MAKE_FLAGS += \
-	-f Makefile-libbz2_so \
 	CFLAGS="$(TARGET_CFLAGS)" \
 	LDFLAGS="$(TARGET_LDFLAGS)" \
-	all
+	libbz2.a
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
 	$(CP) $(PKG_BUILD_DIR)/bzlib.h $(1)/usr/include/
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/libbz2.so.$(PKG_VERSION) $(1)/usr/lib/
-	$(LN) libbz2.so.$(PKG_VERSION) $(1)/usr/lib/libbz2.so.1.0
-	$(LN) libbz2.so.$(PKG_VERSION) $(1)/usr/lib/libbz2.so
+	$(CP) $(PKG_BUILD_DIR)/libbz2.a  $(1)/usr/lib/
 endef
 
 define Package/libbz2/install
 	$(INSTALL_DIR) $(1)/usr/lib/
-	$(CP) $(PKG_BUILD_DIR)/libbz2.so.$(PKG_VERSION) $(1)/usr/lib/
-	$(LN) libbz2.so.$(PKG_VERSION) $(1)/usr/lib/libbz2.so.1.0
 endef
 
 define Package/bzip2/install

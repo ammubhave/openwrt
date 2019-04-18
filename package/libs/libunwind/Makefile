@@ -53,7 +53,7 @@ endef
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include $(1)/usr/lib/pkgconfig
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/*.h $(1)/usr/include
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libunwin*.so* $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libunwin*.{so,a}* $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/* $(1)/usr/lib/pkgconfig/
 endef
 
